@@ -1,5 +1,4 @@
 # ParrotParty
-
 Also the most obnoxiously exploitable website that you never wanted to exploit.
 
 
@@ -71,3 +70,16 @@ enhance/some-enhancement
 ```
 
 Remember to always to pull the latest updated version of master before starting on a new branch, and checkout your new branch from the latest master. Try not to push straight to master.
+
+**Done by Jun Qi, Christabella, Zhao Juan, Hazel, Shaun**
+_Kopi-CTF for SUTD module Security 50.020_
+
+**Category:**
+
+**Challenge Name:** The Parrot Party
+
+**Short Introdution:**
+
+**Summary of solution:**
+
+**Running code:**
