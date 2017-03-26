@@ -4,7 +4,7 @@ Also the most obnoxiously exploitable website that you never wanted to exploit.
 
 ## System requirements
 
-You should have Python 3.x with pip and PostgreSQL 9.4 or above
+You should have Python 3.x with pip and sqlite3.
 
 ## Setting up
 
@@ -34,22 +34,6 @@ Ensure all required packages are installed
 ```
 pip install -r requirements.txt
 ```
-
-Create the database
-
-```
-psql
-# create database database_parrot_party
-\l
-```
-
-Run migrations and seed data
-
-```
-python manage.py db upgrade
-python manage.py seed
-```
-
 Run the server
 
 ```
