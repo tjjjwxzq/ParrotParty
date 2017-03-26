@@ -26,7 +26,7 @@ Activate the virtual environment and set necessary environment variables (autoen
 ```
 cd ..
 source `which activate.sh`
-cd parrot_party
+cd ParrotParty
 ```
 
 Ensure all required packages are installed
