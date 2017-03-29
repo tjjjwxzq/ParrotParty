@@ -6,7 +6,7 @@ Also the most obnoxiously exploitable website that you never wanted to exploit.
 
 You should have Python 3.x with pip and sqlite3.
 
-## Setting up
+## Setting up the Flask server
 
 Get virtualenv and autoenv
 
@@ -38,6 +38,14 @@ Run the server
 
 ```
 flask run
+```
+
+## Setting up the PhantomJS bot
+
+Cd into the `parrot-bot` directory and run init.sh
+```
+cd parrot-bot
+./init.sh
 ```
 
 ## Contributing

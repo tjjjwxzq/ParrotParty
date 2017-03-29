@@ -39,11 +39,14 @@ def csrf_protect():
             abort(403)
 
 
-def generate_csrf_token():
+def generate_csrf_token(random=False):
     if '_csrf_token' not in session:
-        session['_csrf_token'] = ''.join(
-            random.choice(string.ascii_lowercase) for i in range(10))
-    return session['_csrf_token']
+        if random:
+            session['_csrf_token'] = ''.join(
+                random.choice(string.ascii_lowercase) for i in range(10))
+        else:
+            session['_csrf_token'] = 'avianparty'
+        return session['_csrf_token']
 
 
 app.jinja_env.globals['csrf_token'] = generate_csrf_token
@@ -68,7 +71,6 @@ def require_member(f):
             else:
                 return render_template(
                     'index.html', error='That was a pathetic password you pig')
-
     return check_member
 
 # Views
