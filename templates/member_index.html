@@ -1,0 +1,46 @@
+{% extends "layouts/base.html" %}
+{% block title %}Party Like A Parrot{% endblock %}
+
+{% block content %}
+<div class="container">
+
+  <div class="row">
+    <div class="col-md-12">
+
+      <img class="center-block" src="{{ url_for('static', filename='images/congaparrot.gif')}}" alt="parrot party" width="400" height="400"></img>
+
+    </div>
+  </div>
+
+  <div class="row">
+    <div class="col-md-6 col-md-offset-3">
+
+      <form action="/send_invite" method="post">
+        <button type="submit" class="btn btn-primary">Send Email Invitation</button>
+        <input type="hidden" name="_csrf_token" value="{{ csrf_token() }}">
+        <div class="form-group">
+          <input type="text" name="email" class="form-control" placeholder="Email of recipient"></input>
+        </div>
+        <div class="has-error">
+          <span class="help-block">{{ error }}</span>
+        </div>
+      </form>
+
+      <p>
+        Measure your parrotosklusivity here.
+      </p>
+
+      <form action="/request-invite" method="post">
+        <button type="submit" class="btn btn-primary">Replace me with the RCE thang</button>
+        <div class="form-group">
+          <textarea rows="4" name="request_invite" class="form-control" placeholder="This prating poppycock better be worth it"></textarea>
+        </div>
+      </form>
+
+    </div>
+
+  </div>
+
+</div>
+
+{% endblock %}
