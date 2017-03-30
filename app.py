@@ -39,14 +39,14 @@ def csrf_protect():
             abort(403)
 
 
-def generate_csrf_token(random=False):
+def generate_csrf_token(random_token=False):
     if '_csrf_token' not in session:
-        if random:
+        if random_token:
             session['_csrf_token'] = ''.join(
                 random.choice(string.ascii_lowercase) for i in range(10))
         else:
             session['_csrf_token'] = 'avianparty'
-        return session['_csrf_token']
+    return session['_csrf_token']
 
 
 app.jinja_env.globals['csrf_token'] = generate_csrf_token
