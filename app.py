@@ -10,7 +10,6 @@ from flask_mail import Mail, Message
 app = Flask(__name__)
 app.config.from_object(os.environ['APP_SETTINGS'])
 mail = Mail(app)
-
 # Database setup
 DATABASE = 'database.db'
 
@@ -28,6 +27,13 @@ def close_connection(exception):
     if db is not None:
         db.close()
 
+
+def create_plea_tables():
+    db= get_db()
+    cur = db.cursor()
+    cur.execute('''create table if not exists plea_table(content_plea text)''')
+    db.commit()
+    db.close()
 # CSRF protection
 
 
@@ -75,17 +81,37 @@ def require_member(f):
 
 # Views
 
-
+#create the plea tables
 @app.route('/')
 def index():
+    create_plea_tables()
     return render_template('index.html')
+
 
 
 @app.route('/party-parrots', methods=['GET', 'POST'])
 @require_member
 def member_index():
-    return render_template('member_index.html')
+    db= get_db()
+    cur = db.cursor()
+    pleas=[]
+    for c in cur.execute('SELECT * FROM plea_table'):
+        pleas.append(c[0])
+    db.commit()
+    db.close()
 
+    return render_template('member_index.html',plea_list=pleas)
+
+
+#write the pleas into the database
+@app.route('/request-invite',methods=['POST'])
+def plea_index():
+    plea_input = request.form.get('_plea')
+    db= get_db()
+    cur = db.cursor()
+    cur.execute("INSERT INTO plea_table VALUES (?)",(plea_input,))
+    db.commit()
+    return render_template('index.html')
 
 @app.route('/calculate', methods=['POST'])
 @require_member
