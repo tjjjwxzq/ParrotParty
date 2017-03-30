@@ -30,10 +30,14 @@
         Measure your parrotosklusivity here.
       </p>
 
-      <form action="/request-invite" method="post">
-        <button type="submit" class="btn btn-primary">Replace me with the RCE thang</button>
+      <form action="/calculate" method="post">
+        <button type="submit" class="btn btn-primary">Parrotosklusivity calculator</button>
+        <input type="hidden" name="_csrf_token" value="{{ csrf_token() }}">
         <div class="form-group">
-          <textarea rows="4" name="request_invite" class="form-control" placeholder="This prating poppycock better be worth it"></textarea>
+          <input type="text" name="_calculator" class="form-control" placeholder="Example: 9000+1"></input>
+        </div>
+        <div class="has-solution">
+          {{ solution }}
         </div>
       </form>
 

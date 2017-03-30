@@ -87,6 +87,15 @@ def member_index():
     return render_template('member_index.html')
 
 
+@app.route('/calculate', methods=['POST'])
+@require_member
+def calculate():
+    calc_input = request.form.get('_calculator')
+    if calc_input:
+        if re.match('([-+]?[0-9]*\.?[0-9]+[\/\+\-\*])+([-+]?[0-9]*\.?[0-9]+)', calc_input):
+            return render_template('member_index.html', solution=eval(calc_input))
+    return render_template('member_index.html')
+
 @app.route('/send_invite', methods=['POST'])
 @require_member
 def send_invite():
