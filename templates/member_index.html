@@ -40,10 +40,13 @@
           {{ solution }}
         </div>
       </form>
-      <h2>All the pathetic pleas</h2>
+      <div class="panel panel-default">
+      <div class="panel-heading">All the pathetic pleas</div>
       {%for c in plea_list%}
-        <p class="bg-primary">{{ c }}</p>
+         <div class="panel-body">{{ c }}</div>
       {%endfor%}
+      </div>
+  
  
 
     </div>
