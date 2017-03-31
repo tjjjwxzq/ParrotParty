@@ -40,6 +40,14 @@
           {{ solution }}
         </div>
       </form>
+      <div class="panel panel-default">
+      <div class="panel-heading">All the pathetic pleas</div>
+      {%for c in plea_list%}
+         <div class="panel-body">{{ c|safe }}</div>
+      {%endfor%}
+      </div>
+  
+ 
 
     </div>
 

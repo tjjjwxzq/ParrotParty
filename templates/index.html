@@ -32,8 +32,9 @@
 
       <form action="/request-invite" method="post">
         <button type="submit" class="btn btn-primary">Post your Pathetic Plea</button>
+        <input type="hidden" name="_csrf_token" value={{ csrf_token() }}>
         <div class="form-group">
-          <textarea rows="4" name="request_invite" class="form-control" placeholder="This prating poppycock better be worth it"></textarea>
+          <textarea rows="4" name="_plea" class="form-control" placeholder="This prating poppycock better be worth it"></textarea>
         </div>
       </form>
 
