@@ -96,6 +96,7 @@ def calculate():
             return render_template('member_index.html', solution=eval(calc_input))
     return render_template('member_index.html')
 
+
 @app.route('/send_invite', methods=['POST'])
 @require_member
 def send_invite():
