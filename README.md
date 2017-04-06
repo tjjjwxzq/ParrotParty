@@ -66,12 +66,12 @@ Remember to always to pull the latest updated version of master before starting 
 **Done by Jun Qi, Christabella, Zhao Juan, Hazel, Shaun**
 _Kopi-CTF for SUTD module Security 50.020_
 
-**Category:**
+**Category:** Web Security
 
 **Challenge Name:** The Parrot Party
 
-**Short Introdution:**
+**Short Introdution:** You have this jerk of a friend who tries to act like a c00lk1d and seems to be a member of some super exclusive online club where the parrots go to party, and this makes you jealous. REALLY jealous. Some days the jealousy gets so bad you think you should just hack into that stupid club and show them what you’re about. Turns out that today is the day you realize you should finally put 50.020 to good use. So you put on your 1337h4xx0rZ hat. 
 
-**Summary of solution:**
+You remember that several days ago, you saw your friend on the club website, sending an invitation to someone to join the club (someone evidently way cooler than you). He (evidently also way stupider than you) left his laptop unattended to talk to someone for a few minutes. You stole by and took note of the flask app's HTTP endpoint: a POST request to {domain-name}/send_invite with form params ‘email’ and ‘_csrf_token’. You also realise that the app makes use of a PostgreSQL database.
 
-**Running code:**
+You figure that the people who built the website were probably idiots, and you’d be able to exploit this somehow to get the password to join the club. But you know it’s not enough to just get into the club: you want to bring the whole damn server down and get at the secret you know those birdbrains are hiding from the world. It’s time to join the parrot party, 1337h4xx0r style.
