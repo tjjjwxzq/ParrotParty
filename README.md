@@ -50,7 +50,7 @@ cd parrot-bot
 
 ## Deploy PhantomJS bot on EC2 instance
 
-`ssh` into the Ubuntu EC2 instance and build PhantomJS:
+`ssh` into the Ubuntu EC2 instance and build PhantomJS (instructions adapted from [this blogpost](https://www.codeammo.com/article/install-phantomjs-amazon-linux) for Ubuntu):
 
 ```
 sudo apt-get install libstdc++ fontconfig
