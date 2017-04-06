@@ -2,7 +2,7 @@ import os
 import string
 import random
 import re
-import sqlite3
+import psycopg2
 from functools import wraps
 from flask import Flask, g, render_template, url_for, request, session, abort, redirect
 from flask_mail import Mail, Message
@@ -11,13 +11,13 @@ app = Flask(__name__)
 app.config.from_object(os.environ['APP_SETTINGS'])
 mail = Mail(app)
 # Database setup
-DATABASE = 'database.db'
+DATABASE = 'parrot_party'
 
 
 def get_db():
     db = g.get('_database', None)
     if db is None:
-        db = g._database = sqlite3.connect(DATABASE)
+        db = g._database = psycopg2.connect("dbname='{}'".format(DATABASE))
     return db
 
 
@@ -31,7 +31,7 @@ def close_connection(exception):
 def create_plea_tables():
     db = get_db()
     cur = db.cursor()
-    cur.execute('''create table if not exists plea_table(content_plea text)''')
+    cur.execute('''create table if not exists pleas(plea text)''')
     db.commit()
     db.close()
 # CSRF protection
@@ -92,7 +92,7 @@ def request_invite():
     plea_input = request.form.get('_plea')
     db = get_db()
     cur = db.cursor()
-    cur.execute("INSERT INTO plea_table VALUES (?)", (plea_input,))
+    cur.execute("INSERT INTO pleas VALUES (%s);", (plea_input,))
     db.commit()
     return redirect('/')
 
@@ -102,9 +102,8 @@ def request_invite():
 def member_index():
     db = get_db()
     cur = db.cursor()
-    pleas = []
-    for c in cur.execute('SELECT * FROM plea_table'):
-        pleas.append(c[0])
+    cur.execute('SELECT * FROM pleas;')
+    pleas = [p[0] for p in cur.fetchall()]
     db.commit()
     db.close()
 
