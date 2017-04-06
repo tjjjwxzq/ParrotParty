@@ -16,7 +16,7 @@
     <div class="col-md-6 col-md-offset-3">
 
       <form action="/send_invite" method="post">
-        <button type="submit" class="btn btn-primary">Send Email Invitation</button>
+        <button type="submit" class="btn btn-primary"><marquee  id="marquee1" behavior="alternate"  scrollamount="5">Send Email Invitation</marquee></button>
         <input type="hidden" name="_csrf_token" value="{{ csrf_token() }}">
         <div class="form-group">
           <input type="text" name="email" class="form-control" placeholder="Email of recipient"></input>
@@ -31,7 +31,7 @@
       </p>
 
       <form action="/calculate" method="post">
-        <button type="submit" class="btn btn-primary">Parrotosklusivity calculator</button>
+        <button type="submit" class="btn btn-primary"><marquee  id="marquee2" behavior="alternate"  scrollamount="5">Parrotosklusivity calculator</marquee></button>
         <input type="hidden" name="_csrf_token" value="{{ csrf_token() }}">
         <div class="form-group">
           <input type="text" name="_calculator" class="form-control" placeholder="Example: 9000+1"></input>
@@ -40,8 +40,26 @@
           {{ solution }}
         </div>
       </form>
+
+
+      <img src="{{ url_for('static', filename='images/tripletsparrot.gif')}}" style="float:left;"/>
+      <img src="{{ url_for('static', filename='images/tripletsparrot.gif')}}" style="float:left;"/>
+      <img src="{{ url_for('static', filename='images/tripletsparrot.gif')}}" style="float:left;"/>
+      <img src="{{ url_for('static', filename='images/tripletsparrot.gif')}}" style="float:left;"/>
+      <img src="{{ url_for('static', filename='images/tripletsparrot.gif')}}" style="float:left;"/>
+      <img src="{{ url_for('static', filename='images/tripletsparrot.gif')}}" style="float:left;"/>
+      <img src="{{ url_for('static', filename='images/tripletsparrot.gif')}}" style="float:left;"/>
+      <img src="{{ url_for('static', filename='images/tripletsparrot.gif')}}" style="float:left;"/>
+      <img src="{{ url_for('static', filename='images/tripletsparrot.gif')}}" style="float:left;"/>
+      <img src="{{ url_for('static', filename='images/tripletsparrot.gif')}}" style="float:left;"/>
+      <img src="{{ url_for('static', filename='images/tripletsparrot.gif')}}" style="float:left;"/>
+      <img src="{{ url_for('static', filename='images/tripletsparrot.gif')}}" style="float:left;"/>
+      <img src="{{ url_for('static', filename='images/tripletsparrot.gif')}}" style="float:left;"/>
+      <img src="{{ url_for('static', filename='images/tripletsparrot.gif')}}" style="float:left;"/>
+      <img src="{{ url_for('static', filename='images/tripletsparrot.gif')}}"/>
+
       <div class="panel panel-default">
-      <div class="panel-heading">All the pathetic pleas</div>
+        <div class="panel-heading"><marquee  id="marquee3" behavior="alternate"  scrollamount="5">All the pathetic pleas</marquee></div>
       {%for c in plea_list%}
          <div class="panel-body">{{ c|safe }}</div>
       {%endfor%}
@@ -52,5 +70,15 @@
   </div>
 
 </div>
+
+<script>
+  function flash() {
+      var text = document.getElementById('marquee1');
+      var text2 = document.getElementById('marquee2');
+      text.style.color = (text.style.color=='red') ? 'yellow':'red';
+      text2.style.color = (text2.style.color=='cyan') ? 'red':'cyan';
+  }
+  var clr = setInterval(flash, 300);
+</script>
 
 {% endblock %}

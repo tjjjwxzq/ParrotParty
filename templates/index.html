@@ -15,8 +15,27 @@
   <div class="row">
     <div class="col-md-6 col-md-offset-3">
 
+      <img src="{{ url_for('static', filename='images/reversecongaparrot.gif')}}" style="float:left;"/>
+      <img src="{{ url_for('static', filename='images/reversecongaparrot.gif')}}" style="float:left;"/>
+      <img src="{{ url_for('static', filename='images/reversecongaparrot.gif')}}" style="float:left;"/>
+      <img src="{{ url_for('static', filename='images/reversecongaparrot.gif')}}" style="float:left;"/>
+      <img src="{{ url_for('static', filename='images/reversecongaparrot.gif')}}" style="float:left;"/>
+      <img src="{{ url_for('static', filename='images/reversecongaparrot.gif')}}" style="float:left;"/>
+      <img src="{{ url_for('static', filename='images/reversecongaparrot.gif')}}" style="float:left;"/>
+      <img src="{{ url_for('static', filename='images/reversecongaparrot.gif')}}" style="float:left;"/>
+      <img src="{{ url_for('static', filename='images/reversecongaparrot.gif')}}" style="float:left;"/>
+      <img src="{{ url_for('static', filename='images/reversecongaparrot.gif')}}" style="float:left;"/>
+      <img src="{{ url_for('static', filename='images/reversecongaparrot.gif')}}" style="float:left;"/>
+      <img src="{{ url_for('static', filename='images/reversecongaparrot.gif')}}" style="float:left;"/>
+      <img src="{{ url_for('static', filename='images/reversecongaparrot.gif')}}" style="float:left;"/>
+      <img src="{{ url_for('static', filename='images/reversecongaparrot.gif')}}" style="float:left;"/>
+      <img src="{{ url_for('static', filename='images/reversecongaparrot.gif')}}" style="float:left;"/>
+      <img src="{{ url_for('static', filename='images/reversecongaparrot.gif')}}" style="float:left;"/>
+      <img src="{{ url_for('static', filename='images/reversecongaparrot.gif')}}" style="float:left;"/>
+      <img src="{{ url_for('static', filename='images/reversecongaparrot.gif')}}" style="float:left;"/>
+
       <form action="/party-parrots" method="post">
-        <button type="submit" class="btn btn-primary">Join the Party</button>
+        <button type="submit" class="btn btn-primary"><marquee  id="marquee1" behavior="alternate"  scrollamount="5">Join the Party</marquee></button>
         <input type="hidden" name="_csrf_token" value={{ csrf_token() }}>
         <div class="form-group">
           <input type="text" name="password" class="form-control" placeholder="Super Exklusive Password"></input>
@@ -26,12 +45,31 @@
         </div>
       </form>
 
+      <img src="{{ url_for('static', filename='images/aussiecongaparrot.gif')}}" style="float:left;"/>
+      <img src="{{ url_for('static', filename='images/aussiecongaparrot.gif')}}" style="float:left;"/>
+      <img src="{{ url_for('static', filename='images/aussiecongaparrot.gif')}}" style="float:left;"/>
+      <img src="{{ url_for('static', filename='images/aussiecongaparrot.gif')}}" style="float:left;"/>
+      <img src="{{ url_for('static', filename='images/aussiecongaparrot.gif')}}" style="float:left;"/>
+      <img src="{{ url_for('static', filename='images/aussiecongaparrot.gif')}}" style="float:left;"/>
+      <img src="{{ url_for('static', filename='images/aussiecongaparrot.gif')}}" style="float:left;"/>
+      <img src="{{ url_for('static', filename='images/aussiecongaparrot.gif')}}" style="float:left;"/>
+      <img src="{{ url_for('static', filename='images/aussiecongaparrot.gif')}}" style="float:left;"/>
+      <img src="{{ url_for('static', filename='images/aussiecongaparrot.gif')}}" style="float:left;"/>
+      <img src="{{ url_for('static', filename='images/aussiecongaparrot.gif')}}" style="float:left;"/>
+      <img src="{{ url_for('static', filename='images/aussiecongaparrot.gif')}}" style="float:left;"/>
+      <img src="{{ url_for('static', filename='images/aussiecongaparrot.gif')}}" style="float:left;"/>
+      <img src="{{ url_for('static', filename='images/aussiecongaparrot.gif')}}" style="float:left;"/>
+      <img src="{{ url_for('static', filename='images/aussiecongaparrot.gif')}}" style="float:left;"/>
+      <img src="{{ url_for('static', filename='images/aussiecongaparrot.gif')}}" style="float:left;"/>
+      <img src="{{ url_for('static', filename='images/aussiecongaparrot.gif')}}" style="float:left;"/>
+      <img src="{{ url_for('static', filename='images/aussiecongaparrot.gif')}}"/>
+
       <p>
         If you don't have the super exklusive password, we profligate partying psittaciformes probably are way too kewl for you. Unless you can convince us otherwise, you snotty-nosed pile of parrot droppings. Parrot pox on you.
       </p>
 
       <form action="/request-invite" method="post">
-        <button type="submit" class="btn btn-primary">Post your Pathetic Plea</button>
+        <button type="submit" class="btn btn-primary"><marquee  id="marquee2" behavior="alternate"  scrollamount="5">Post your Pathetic Plea</marquee></button>
         <input type="hidden" name="_csrf_token" value={{ csrf_token() }}>
         <div class="form-group">
           <textarea rows="4" name="_plea" class="form-control" placeholder="This prating poppycock better be worth it"></textarea>
@@ -45,5 +83,15 @@
   </div>
 
 </div>
+
+<script>
+  function flash() {
+      var text = document.getElementById('marquee1');
+      var text2 = document.getElementById('marquee2');
+      text.style.color = (text.style.color=='red') ? 'yellow':'red';
+      text2.style.color = (text2.style.color=='cyan') ? 'red':'cyan';
+  }
+  var clr = setInterval(flash, 300);
+</script>
 
 {% endblock %}

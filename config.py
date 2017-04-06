@@ -10,6 +10,7 @@ class Config(object):
 class DevelopmentConfig(Config):
     DEVELOPMENT = True
     DEBUG = True
+    PORT = int(os.environ.get("PORT", 5000))
     MAIL_SERVER = os.environ['MAIL_SERVER']
     MAIL_PORT = 587
     MAIL_USE_TLS = True
