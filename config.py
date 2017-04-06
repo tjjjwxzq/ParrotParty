@@ -16,3 +16,4 @@ class DevelopmentConfig(Config):
     MAIL_USE_TLS = True
     MAIL_USERNAME = os.environ['MAIL_USERNAME']
     MAIL_PASSWORD = os.environ['MAIL_PASSWORD']
+    MAIL_DEFAULT_SENDER = 'partyparrot'
