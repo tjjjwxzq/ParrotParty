@@ -2,7 +2,7 @@ import os
 import string
 import random
 import re
-import urlparse
+from urllib.parse import urlparse
 import psycopg2
 from functools import wraps
 from flask import Flask, g, render_template, url_for, request, session, abort, redirect
@@ -12,8 +12,7 @@ app = Flask(__name__)
 app.config.from_object(os.environ['APP_SETTINGS'])
 mail = Mail(app)
 # Database setup
-urlparse.uses_netloc.append("postgres")
-url = urlparse.urlparse(os.environ["DATABASE_URL"])
+url = urlparse(os.environ['DATABASE_URL'])
 
 
 def get_db():
@@ -54,11 +53,13 @@ def csrf_protect():
 
 
 def generate_csrf_token(random_token=True):
-    if random_token:
-        session['_csrf_token'] = ''.join(
-            random.choice(string.ascii_lowercase) for i in range(10))
-    else:
-        session['_csrf_token'] = 'avianparty'
+    if not session.get('_csrf_token', None):
+        if random_token:
+            session['_csrf_token'] = ''.join(
+                random.choice(string.ascii_lowercase) for i in range(10))
+            print(session['_csrf_token'])
+        else:
+            session['_csrf_token'] = 'avianparty'
     return session['_csrf_token']
 
 
