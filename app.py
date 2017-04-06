@@ -53,7 +53,7 @@ def csrf_protect():
             abort(403)
 
 
-def generate_csrf_token(random_token=False):
+def generate_csrf_token(random_token=True):
     if '_csrf_token' not in session:
         if random_token:
             session['_csrf_token'] = ''.join(
