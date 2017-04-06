@@ -29,7 +29,7 @@ def close_connection(exception):
 
 
 def create_plea_tables():
-    db= get_db()
+    db = get_db()
     cur = db.cursor()
     cur.execute('''create table if not exists plea_table(content_plea text)''')
     db.commit()
@@ -81,37 +81,35 @@ def require_member(f):
 
 # Views
 
-#create the plea tables
 @app.route('/')
 def index():
     create_plea_tables()
     return render_template('index.html')
 
 
+@app.route('/request-invite', methods=['POST'])
+def request_invite():
+    plea_input = request.form.get('_plea')
+    db = get_db()
+    cur = db.cursor()
+    cur.execute("INSERT INTO plea_table VALUES (?)", (plea_input,))
+    db.commit()
+    return redirect('/')
+
 
 @app.route('/party-parrots', methods=['GET', 'POST'])
 @require_member
 def member_index():
-    db= get_db()
+    db = get_db()
     cur = db.cursor()
-    pleas=[]
+    pleas = []
     for c in cur.execute('SELECT * FROM plea_table'):
         pleas.append(c[0])
     db.commit()
     db.close()
 
-    return render_template('member_index.html',plea_list=pleas)
+    return render_template('member_index.html', plea_list=pleas)
 
-
-#write the pleas into the database
-@app.route('/request-invite',methods=['POST'])
-def plea_index():
-    plea_input = request.form.get('_plea')
-    db= get_db()
-    cur = db.cursor()
-    cur.execute("INSERT INTO plea_table VALUES (?)",(plea_input,))
-    db.commit()
-    return render_template('index.html')
 
 @app.route('/calculate', methods=['POST'])
 @require_member
