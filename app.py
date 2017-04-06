@@ -11,7 +11,7 @@ app = Flask(__name__)
 app.config.from_object(os.environ['APP_SETTINGS'])
 mail = Mail(app)
 # Database setup
-DATABASE = os.environ['DATABASE_URL']
+DATABASE = os.environ['DATABASE_URL'] + '?sslmode=require'
 
 
 def get_db():
