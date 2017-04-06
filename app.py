@@ -11,7 +11,7 @@ app = Flask(__name__)
 app.config.from_object(os.environ['APP_SETTINGS'])
 mail = Mail(app)
 # Database setup
-DATABASE = 'parrot_party'
+DATABASE = os.environ['DATABASE_URL']
 
 
 def get_db():
