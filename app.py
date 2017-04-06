@@ -2,6 +2,7 @@ import os
 import string
 import random
 import re
+import urlparse
 import psycopg2
 from functools import wraps
 from flask import Flask, g, render_template, url_for, request, session, abort, redirect
@@ -11,13 +12,20 @@ app = Flask(__name__)
 app.config.from_object(os.environ['APP_SETTINGS'])
 mail = Mail(app)
 # Database setup
-DATABASE = os.environ['DATABASE_URL'] + '?sslmode=require'
+urlparse.uses_netloc.append("postgres")
+url = urlparse.urlparse(os.environ["DATABASE_URL"])
 
 
 def get_db():
     db = g.get('_database', None)
     if db is None:
-        db = g._database = psycopg2.connect("dbname='{}'".format(DATABASE))
+        db = g._database = psycopg2.connect(
+            database=url.path[1:],
+            user=url.username,
+            password=url.password,
+            host=url.hostname,
+            port=url.port
+        )
     return db
 
 
