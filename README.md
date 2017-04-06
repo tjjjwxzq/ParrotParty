@@ -48,6 +48,26 @@ cd parrot-bot
 ./init.sh
 ```
 
+## Deploy PhantomJS bot on EC2 instance
+
+`ssh` into the Ubuntu EC2 instance and build PhantomJS:
+
+```
+sudo apt-get install libstdc++ fontconfig
+sudo apt-get install freetype-devel fontconfig-devel
+wget https://bitbucket.org/ariya/phantomjs/downloads/phantomjs-2.1.1-linux-x86_64.tar.bz2
+sudo mkdir -p /opt/phantomjs
+bzip2 -d phantomjs-2.1.1-linux-x86_64.tar.bz2 
+sudo tar -xvf phantomjs-2.1.1-linux-x86_64.tar  --directory /opt/phantomjs/ --strip-components 1
+sudo ln -s /opt/phantomjs/bin/phantomjs /usr/bin/phantomjs
+```
+
+Set up a cron job to run the PhantomJS script every minute:
+
+```
+* * * * * /usr/bin/phantomjs /home/ec2-user/parrot-bot.js >> /tmp/log
+```
+
 ## Contributing
 
 Follow the GitHub workflow. Push your work to a separate branch, and let others know that your code is awaiting review. Once your code has passed review, squash merge it into master and delete the branch.
